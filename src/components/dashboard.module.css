@@ -1,0 +1,14 @@
+.name{
+        position: absolute;
+    width: 236px;
+    height: 30px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 35px;
+    line-height: 42px;
+
+    color: rgba(255, 255, 255, 0.73);
+
+}
