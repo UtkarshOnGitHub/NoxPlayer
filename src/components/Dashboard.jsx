@@ -2,14 +2,15 @@ import { Box, Flex, Image, Slider, SliderFilledTrack, SliderMark, SliderThumb, S
 import React, { useRef, useState } from 'react'
 import {BsFillSkipBackwardFill, BsFillSkipForwardFill, BsPauseFill, BsPlayFill} from "react-icons/bs";
 import song1 from "../Assets/Song3.mp3";
-import song2 from "../Assets/Song2.wav";
-import song3 from "../Assets/Song1.wav";
-let newAudio = new Audio(song1)
+import song2 from "../Assets/Song2.mp3";
+import song3 from "../Assets/Song1.mp3";
+let newAudio = new Audio(song3)
 
 let arr = [
-    {songTitle:"Anamoly", audioSrc:song1 ,imgSrc:"https://wallpapercave.com/wp/wp8297104.jpg",artist:"Noxious"},
-    {songTitle:"Gunna Type Beat", audioSrc:song2 ,imgSrc:"https://w0.peakpx.com/wallpaper/322/439/HD-wallpaper-x-xten-blue-cool-design-rap-rapper-red.jpg",artist:"Jay Cactus"},
-    {songTitle:"Reason To Kill You", audioSrc:song3 ,imgSrc:"https://play-lh.googleusercontent.com/ISSpyeMde6MqPGYcrFN5tQyRUtPX903MDuwiQuLqXGOVNDX9Bt0a34iwnkK16b2lFxU",artist:"Ocean"},
+    {songTitle:"Reason To Kill You", audioSrc:song3 ,imgSrc:"https://play-lh.googleusercontent.com/ISSpyeMde6MqPGYcrFN5tQyRUtPX903MDuwiQuLqXGOVNDX9Bt0a34iwnkK16b2lFxU",artist:"Noxious Beats"},
+    {songTitle:"Anamoly", audioSrc:song1 ,imgSrc:"https://wallpapercave.com/wp/wp8297104.jpg",artist:"Noxious Beats"},
+    {songTitle:"Ignite-Guitar Type Beat", audioSrc:song2 ,imgSrc:"https://w0.peakpx.com/wallpaper/322/439/HD-wallpaper-x-xten-blue-cool-design-rap-rapper-red.jpg",artist:"Noxious Beats"},
+
 ]
 let i =0 
 const fixTime = (time) => {
@@ -109,8 +110,8 @@ const Dashboard = () => {
         </div>
         <div className="progress-container" id="progress-container">
             <Slider aria-label='slider-ex-4' defaultValue={0} value={progressValue} onChange={(val) => {handleProgressChange(val)}}>
-                <SliderMark value={0} mt='1' ml='-2.5' fontSize='sm'>{Currtime}</SliderMark>
-                <SliderMark value={95} mt='1' ml='-2.5' fontSize='sm'>{time}</SliderMark>
+                <SliderMark value={0} mt='1' mr='-3.5' fontSize='sm'>{Currtime}</SliderMark>
+                <SliderMark value={95} mt='1' ml='-3.5' fontSize='sm'>{time}</SliderMark>
                 <SliderTrack bg='red.100'>
                     <SliderFilledTrack bg='tomato' />
                 </SliderTrack>
@@ -120,7 +121,7 @@ const Dashboard = () => {
             </Slider>
         </div>
         
-        <div className="player-controls">
+        <div className="player-controls" border="1px solid red">
             <BsFillSkipBackwardFill className='fas' onClick={handleBackward} />
             {!playState ? <BsPlayFill className='fas' onClick={handlePlaySong}/>:<BsPauseFill className='fas' onClick={handlePauseSong}/>}
             <BsFillSkipForwardFill className='fas' onClick={handleForward}/>
