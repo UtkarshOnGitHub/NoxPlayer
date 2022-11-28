@@ -7,7 +7,7 @@ import song3 from "../Assets/Song1.wav";
 let newAudio = new Audio(song1)
 
 let arr = [
-    {songTitle:"Anamoly", audioSrc:song1 ,imgSrc:"https://www.whoa.in/download/cool-trending-mobile-wallpapers-hd-wallpapers-images",artist:"Noxious"},
+    {songTitle:"Anamoly", audioSrc:song1 ,imgSrc:"https://wallpapercave.com/wp/wp8297104.jpg",artist:"Noxious"},
     {songTitle:"Gunna Type Beat", audioSrc:song2 ,imgSrc:"https://w0.peakpx.com/wallpaper/322/439/HD-wallpaper-x-xten-blue-cool-design-rap-rapper-red.jpg",artist:"Jay Cactus"},
     {songTitle:"Reason To Kill You", audioSrc:song3 ,imgSrc:"https://play-lh.googleusercontent.com/ISSpyeMde6MqPGYcrFN5tQyRUtPX903MDuwiQuLqXGOVNDX9Bt0a34iwnkK16b2lFxU",artist:"Ocean"},
 ]
@@ -33,7 +33,8 @@ const Dashboard = () => {
     const [progressValue , setProgressValue] = useState(0/100)
     const [title,setTitle] = useState(arr[0].songTitle)
     const [artist,setArtist] = useState(arr[0].artist)
-    const [image ,setImage] = useState(arr[0].audioSrc)
+    const [image ,setImage] = useState(arr[0].imgSrc)
+
 
     newAudio.addEventListener("timeupdate",()=>{
         let progress = Math.floor((newAudio.currentTime/newAudio.duration)*100)
@@ -97,6 +98,7 @@ const Dashboard = () => {
         }
 
   return (
+    <div className='main'>
     <div className="player-container">
         <div className="img-container">
             <img src={image} alt="Album Art"/>
@@ -123,6 +125,7 @@ const Dashboard = () => {
             {!playState ? <BsPlayFill className='fas' onClick={handlePlaySong}/>:<BsPauseFill className='fas' onClick={handlePauseSong}/>}
             <BsFillSkipForwardFill className='fas' onClick={handleForward}/>
         </div>
+    </div>
     </div>
   )
 }

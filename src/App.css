@@ -13,8 +13,10 @@ body {
   align-items: center;
   font-family: Spartan, sans-serif;
   font-size: 12px;
+  background-image: url("https://wallpaper.dog/large/10785472.jpg");
  
 }
+
 
 .player-container {
   height: 600px;
