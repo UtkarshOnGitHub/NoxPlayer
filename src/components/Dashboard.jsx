@@ -1,9 +1,10 @@
 import { Box, Flex, Image, Slider, SliderFilledTrack, SliderMark, SliderThumb, SliderTrack, Text, useStatStyles,} from '@chakra-ui/react'
 import React, { useRef, useState } from 'react'
-import {BsFillSkipBackwardFill, BsFillSkipForwardFill, BsPauseFill, BsPlayFill} from "react-icons/bs";
+import {BsArrowRepeat, BsDownload, BsFillSkipBackwardFill, BsFillSkipForwardFill, BsPauseFill, BsPlayFill} from "react-icons/bs";
 import song1 from "../Assets/Song3.mp3";
 import song2 from "../Assets/Song2.mp3";
 import song3 from "../Assets/Song1.mp3";
+import {TbRepeatOff,TbRepeatOnce} from "react-icons/tb"
 let newAudio = new Audio(song3)
 
 let arr = [
@@ -35,6 +36,7 @@ const Dashboard = () => {
     const [title,setTitle] = useState(arr[0].songTitle)
     const [artist,setArtist] = useState(arr[0].artist)
     const [image ,setImage] = useState(arr[0].imgSrc)
+    const [repeat , setRepeat] = useState(false)
 
 
     newAudio.addEventListener("timeupdate",()=>{
@@ -43,9 +45,14 @@ const Dashboard = () => {
         let timeZone = formatTime(Math.floor(newAudio.currentTime)) || `0:00`
         setCurrTime(timeZone)
         if(newAudio.currentTime===newAudio.duration){
-            setPlayState(!playState)
+            if(repeat){
+                newAudio.play()
+            }else{
+                newAudio.pause()
+                setPlayState(!playState)
+            }
         }
-        
+        // console.log(repeat)
     })
     const handlePlaySong =()=>{
         newAudio.play()
@@ -97,6 +104,9 @@ const Dashboard = () => {
             },500)
 
         }
+        const handleRepeat =()=>{
+            setRepeat(!repeat)
+        }
 
   return (
     <div className='main'>
@@ -121,10 +131,14 @@ const Dashboard = () => {
             </Slider>
         </div>
         
-        <div className="player-controls" border="1px solid red">
-            <BsFillSkipBackwardFill className='fas' onClick={handleBackward} />
-            {!playState ? <BsPlayFill className='fas' onClick={handlePlaySong}/>:<BsPauseFill className='fas' onClick={handlePauseSong}/>}
-            <BsFillSkipForwardFill className='fas' onClick={handleForward}/>
+        <div className="player-controls">
+            {repeat ? <TbRepeatOnce className='fas' onClick={handleRepeat} /> :<TbRepeatOff className='fas' onClick={handleRepeat}/>}
+            <div style={{display:"flex" , gap:"25px"}}>
+                <BsFillSkipBackwardFill className='fas' onClick={handleBackward} />
+                {!playState ? <BsPlayFill className='fas' onClick={handlePlaySong}/>:<BsPauseFill className='fas' onClick={handlePauseSong}/>}
+                <BsFillSkipForwardFill className='fas' onClick={handleForward}/>
+            </div>
+            <a href="../Assets/Song1.mp3" download= {title}><BsDownload className='fas' /></a>
         </div>
     </div>
     </div>

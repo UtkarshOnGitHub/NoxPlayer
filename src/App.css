@@ -32,7 +32,7 @@ body {
   width: 270px;
   margin: auto;
   position: relative;
-  top: 30px;
+  top: 50px;
   /* left: 50px; */
 }
 
@@ -87,15 +87,15 @@ body {
 .player-controls {
   display: flex;
   position: relative;
-  top: -15px;
-  left: 120px;
-  width: 200px;
+  width: 310px;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .fas {
   font-size: 30px;
   color: rgb(129, 129, 129);
-  margin-right: 30px;
   cursor: pointer;
   user-select: none;
 }
@@ -118,11 +118,6 @@ body {
     margin-top: 0px;
     padding-top: 40px;
   }
-
-  .img-container {
-    /* left: 29px; */
-  }
-
   h2 {
     font-size: 20px;
   }
